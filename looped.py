@@ -56,7 +56,7 @@ while lon < lon_max:
 
             features = data.get("features", [])
             if features:
-                df = pd.DataFrame([f["attributes"] for f in features])
+                df = pd.DataFrame([{**f["attributes"], **{"geometry": f.get("geometry")}} for f in features])
 
                 # Append to CSV
                 df.to_csv(output_file, mode='a', index=False, encoding="utf-8", header=first_write)
