@@ -7,7 +7,8 @@ from pyproj import Transformer
 token = "UiG8WJ3_CDb2GAiRQ1AY9N3CEuwQwulzzmogbEnJpIg."
 
 # Define layer URL
-layer_url = "https://services.geodataonline.no/arcgis/rest/services/Geomap_UTM33_EUREF89/GeomapBedrifter/MapServer/0/query"
+#layer_url = "https://services.geodataonline.no/arcgis/rest/services/Geomap_UTM33_EUREF89/GeomapBedrifter/MapServer/0/query"
+layer_url = "https://services.geodataonline.no/arcgis/rest/services/Geomap_UTM33_EUREF89/GeomapMatrikkelEier/MapServer/1/query"
 
 # Convert lat/lon to UTM33 (EPSG:25833)
 transformer = Transformer.from_crs("EPSG:4326", "EPSG:25833", always_xy=True)
@@ -42,4 +43,7 @@ if features:
     print("CSV saved successfully!")
 else:
     print("No data found.")
+
+df = pd.read_csv('arcgis_features.csv')
+st.write(df)
 
